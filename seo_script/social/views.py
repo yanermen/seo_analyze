@@ -1,15 +1,11 @@
-import os
 import re
-import sys
 
 import requests
-import selenium
 
 from bs4 import BeautifulSoup
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from selenium import webdriver
 
 from .models import Business, SocialNetworkLinksFacebook, SocialNetworkLinksTwitter
 from .serializers import BusinessModelSeriializer
@@ -78,7 +74,11 @@ class FacebookLikes(APIView):
                     ls.append(my_str)
 
         ls[0] = ls[0].replace('\xa0', '')
-        return Response({'facebook people likes': ls[0].split()[1]})
+        result = ''
+        for char in ls[0]:
+            if char.isdigit():
+                result += char
+        return Response({'facebook people likes': result})
 
 
 

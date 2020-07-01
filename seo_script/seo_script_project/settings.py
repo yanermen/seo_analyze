@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tjslx-6x8@-1=itb5cawh*_$mkr)idr3yy76hi-%*l5v=a#97s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['freelancedeveloper.site', 'localhost']
 
 
 # Application definition
@@ -41,12 +41,12 @@ INSTALLED_APPS = [
     # 3rd party
 
     'rest_framework',
+    'corsheaders',
 
     # Local
 
     'social.apps.SocialConfig',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,6 +57,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = [
+    "http://freelancedeveloper.site",
+    "http://localhost:3000",
+    "http://127.0.0.1:8000"
+]
+
 
 ROOT_URLCONF = 'seo_script_project.urls'
 
