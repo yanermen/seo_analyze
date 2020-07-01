@@ -6,4 +6,20 @@ class Business(models.Model):
     business = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.email
+        return self.business
+
+
+class SocialNetworkLinksFacebook(models.Model):
+    business = models.ForeignKey(Business, on_delete=models.CASCADE)
+    facebook_link = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.facebook_link
+
+
+class SocialNetworkLinksTwitter(models.Model):
+    business = models.ForeignKey(Business, on_delete=models.CASCADE)
+    twitter_link = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.twitter_link
