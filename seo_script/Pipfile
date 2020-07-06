@@ -14,6 +14,9 @@ urllib3 = "*"
 scrapy = "*"
 selenium = "*"
 django-cors-headers = "*"
+geckodriver-autoinstaller = "*"
+mysqlclient = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.6"

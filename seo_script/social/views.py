@@ -1,6 +1,10 @@
 import re
 
 import requests
+from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
+from time import sleep
+from urllib.request import urlopen
 
 from bs4 import BeautifulSoup
 from rest_framework import generics
@@ -58,7 +62,7 @@ class ListingPresenceTwitter(APIView):
 
 class FacebookLikes(APIView):
     """
-    Count fb likes
+    Number of facebook likes
     """
 
     def get(self, request):
@@ -82,6 +86,52 @@ class FacebookLikes(APIView):
 
 
 
+class Twitter_followers(APIView):
+    """
+    Get number of followers
+    """
+    def get(self, request):
+        twit_link = SocialNetworkLinksTwitter.objects.all().order_by('-id')[0]
+        link_twitter = twit_link.twitter_link
+
+        options = Options()
+        options.headless = True
+        options.add_argument("--window-size=1920,1200")
+
+        DRIVER_PATH = './chromedriver'
+        driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
+        driver.get(f"{link_twitter}")
+        sleep(3)
+
+        followers = driver.find_element_by_css_selector("a[href='/MercedesBenz/followers']").get_attribute("title")
+
+        sleep(3)
+        driver.quit()
+
+        return Response({'twitter followers': f'{followers}'})
 
 
+class Twitter_following(APIView):
+    """
+    Get number of following
+    """
+    def get(self, request):
+        twit_link = SocialNetworkLinksTwitter.objects.all().order_by('-id')[0]
+        link_twitter = twit_link.twitter_link
+
+        options = Options()
+        options.headless = True
+        options.add_argument("--window-size=1920,1200")
+
+        DRIVER_PATH = './chromedriver'
+        driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
+        driver.get(f"{link_twitter}")
+        sleep(3)
+
+        following = driver.find_element_by_css_selector("a[href='/MercedesBenz/following']").get_attribute("title")
+
+        sleep(3)
+        driver.quit()
+
+        return Response({'twitter followers': f'{following}'})
 

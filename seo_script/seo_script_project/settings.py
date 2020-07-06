@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tjslx-6x8@-1=itb5cawh*_$mkr)idr3yy76hi-%*l5v=a#97s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['freelancedeveloper.site', 'localhost']
+# ALLOWED_HOSTS = ['freelancedeveloper.site', 'localhost']
 
 
 # Application definition
@@ -91,8 +91,12 @@ WSGI_APPLICATION = 'seo_script_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'seo',
+        'USER': 'py',
+        'PASSWORD': 'db_psql',
+        'HOST': '127.0.0.1',
+        'POST': '5432',
     }
 }
 

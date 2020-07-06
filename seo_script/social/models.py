@@ -23,3 +23,4 @@ class SocialNetworkLinksTwitter(models.Model):
 
     def __str__(self):
         return self.twitter_link
+
