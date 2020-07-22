@@ -96,7 +96,7 @@ DATABASES = {
         'USER': 'py',
         'PASSWORD': 'db_psql',
         'HOST': '127.0.0.1',
-        'POST': '5432',
+        'PORT': '5432',
     }
 }
 
