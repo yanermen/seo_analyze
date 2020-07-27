@@ -82,7 +82,7 @@ class FacebookLikes(APIView):
         for char in ls[0]:
             if char.isdigit():
                 result += char
-        return Response({'facebook people likes': result})
+        return Response({'facebook_people_likes': result})
 
 
 
@@ -108,7 +108,7 @@ class Twitter_followers(APIView):
         sleep(3)
         driver.quit()
 
-        return Response({'twitter followers': f'{followers}'})
+        return Response({'twitter_followers': f'{followers}'})
 
 
 class Twitter_following(APIView):
@@ -133,5 +133,5 @@ class Twitter_following(APIView):
         sleep(3)
         driver.quit()
 
-        return Response({'twitter followers': f'{following}'})
+        return Response({'twitter_following': f'{following}'})
 
